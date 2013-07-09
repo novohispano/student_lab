@@ -8,6 +8,10 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'mongoid', github: 'mongoid/mongoid'
+gem 'bson_ext'
+gem 'bootstrap-sass'
+gem 'haml-rails'
+gem 'haml'
 
 group :development, :test do
   gem 'rspec-rails'
