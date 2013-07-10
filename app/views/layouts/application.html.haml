@@ -12,8 +12,13 @@
           = image_tag "http://jumpstartlab.com/images/logo-mark.png", class: "brand"
           = link_to "StudentLab", root_path, class: "brand"
           .nav-collapse.collapse
-            / - if current_user
-            /   %ul.nav
+            - if current_user
+              %ul.nav
+                = image_tag current_user.image, class: "img-circle nav"
+              %ul.nav
+                %p.nav Signed in as #{current_user.email}
+              %ul.nav
+                = link_to "Sign out", signout_path, class: "nav"
             /     = link_to "My Plans", user_plans_path, class: "nav"
             /   %ul.nav
             /     = link_to "Near Plans", near_plans_path, class: "nav"
@@ -22,7 +27,6 @@
             /   %ul.nav
             /     = link_to "All Concerts", concerts_path, class: "nav"
             /   %ul.nav.pull-right
-            /     = link_to "Signed in as #{current_user.name}, Sign out", signout_path, class: "nav"
             / - else
             /   %ul.nav.pull-right
             /     = link_to "Sign in with Facebook", "/auth/facebook", class: "nav"

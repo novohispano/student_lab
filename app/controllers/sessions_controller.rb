@@ -1,16 +1,12 @@
 class SessionsController < ApplicationController
   def create
-    user = User.from_omniauth(params_processor(params))
+    user = User.from_omniauth(env["omniauth.auth"])
     session[:user_id] = user.id
-    redirect_to root_url
+    redirect_to feed_path
   end
 
   def destroy
-  end
-
-  private
-
-  def params_processor(params)
-    params.slice(:provider, :uid)
+    session.destroy
+    redirect_to root_path
   end
 end
