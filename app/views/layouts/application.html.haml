@@ -6,4 +6,28 @@
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tags
   %body
+    .navbar.navbar-top
+      .navbar-inner
+        .container
+          = image_tag "http://jumpstartlab.com/images/logo-mark.png", class: "brand"
+          = link_to "StudentLab", root_path, class: "brand"
+          .nav-collapse.collapse
+            / - if current_user
+            /   %ul.nav
+            /     = link_to "My Plans", user_plans_path, class: "nav"
+            /   %ul.nav
+            /     = link_to "Near Plans", near_plans_path, class: "nav"
+            /   %ul.nav
+            /     = link_to "All Plans", plans_path, class: "nav"
+            /   %ul.nav
+            /     = link_to "All Concerts", concerts_path, class: "nav"
+            /   %ul.nav.pull-right
+            /     = link_to "Signed in as #{current_user.name}, Sign out", signout_path, class: "nav"
+            / - else
+            /   %ul.nav.pull-right
+            /     = link_to "Sign in with Facebook", "/auth/facebook", class: "nav"
+    - if flash.notice
+      .alert= flash.notice
+    - elsif flash.alert
+      .alert.alert-error= flash.alert
     = yield

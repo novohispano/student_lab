@@ -1,1 +1,41 @@
 @import "bootstrap";
+
+// HOME
+
+.home {
+  font-weight: lighter;
+  letter-spacing: -.05em;
+  line-height: 1.2em;
+  text-align: center;
+}
+
+h1.home {
+  font-size: 4em;
+  line-height: 1em;
+  margin-top: 100px;
+}
+
+h2.home {
+  font-size: 2em;
+  line-height: 1.2em;
+  margin-top: 20px;
+}
+
+.btn.home {
+  display: block;
+  margin: 0 auto;
+  margin-top: 30px;
+  position: relative;
+  width: 15%;
+}
+
+// NAV
+
+img.brand {
+  height: 30px;
+  margin-right: -10px;
+}
+
+a.brand {
+  margin-top: 5px;
+}

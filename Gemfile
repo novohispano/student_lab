@@ -12,6 +12,8 @@ gem 'bson_ext'
 gem 'bootstrap-sass'
 gem 'haml-rails'
 gem 'haml'
+gem 'omniauth-github'
+gem 'figaro'
 
 group :development, :test do
   gem 'rspec-rails'
