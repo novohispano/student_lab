@@ -16,7 +16,7 @@
               %ul.nav
                 = image_tag current_user.image, class: "img-circle nav"
               %ul.nav
-                %p.nav Signed in as #{current_user.email}
+                %p.nav #{current_user.email}
               %ul.nav
                 = link_to "Sign out", signout_path, class: "nav"
             /     = link_to "My Plans", user_plans_path, class: "nav"

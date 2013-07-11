@@ -15,11 +15,15 @@ gem 'haml'
 gem 'omniauth-github'
 gem 'figaro'
 
-group :development, :test do
+group :test do
+  gem 'database_cleaner'
   gem 'rspec-rails'
   gem 'capybara'
   gem 'capybara-webkit'
+  gem 'simplecov'
+end
+
+group :development, :test do
   gem 'better_errors'
   gem 'binding_of_caller'
-  gem 'simplecov'
 end
