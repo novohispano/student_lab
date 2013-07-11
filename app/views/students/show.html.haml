@@ -1,0 +1,21 @@
+.container
+  .row.profile
+    .span3
+      %h6 STUDENT PROFILE
+      %h3 #{@student.name}
+    .span8
+      %h6 CONTACT INFO
+      %p e. #{mail_to @student.email}
+      %p p. #{@student.phone}
+      %p g. #{link_to @student.github, @student.github}
+  .row.profile
+    .span3
+      %h4 File
+      %hr
+      %p Timeline
+      %p Evaluations
+      %p Assessments
+      %p 1-on-1s
+    .span8
+      %h4 Timeline
+      %hr

@@ -1,0 +1,23 @@
+.container
+  .row
+    .span3
+      %h4 Students
+      %hr
+      
+      - @students.each do |student|
+        %p= link_to "#{student.name}", student_path(student.id)
+
+      %p= link_to "Add Student", new_student_path
+    .span8
+      %h4 Add a Student
+      %hr
+      = form_for @student do |f|
+        %h5 Student Name (Required)
+        = f.text_field :name
+        %h5 Email (Required)
+        = f.email_field :email
+        %h5 Phone
+        = f.phone_field :phone
+        %h5 Github (URL)
+        = f.url_field :github
+        = f.submit "Add", class: "btn btn-success form"

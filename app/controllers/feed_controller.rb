@@ -1,5 +1,7 @@
 class FeedController < ApplicationController
+  before_action :authenticate_user
+
   def show
-    current_user
+    @students = Student.all
   end
 end
