@@ -10,15 +10,22 @@ class Student
   validates :name, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true
 
+  has_many :activities
+
   def self.create_student(params)
-    student = Student.create
+    student = Student.create(
+      name:   params[:name],
+      email:  params[:email],
+      phone:  params[:phone],
+      github: params[:github]
+      )
 
-    student.name   = params[:name]
-    student.email  = params[:email]
-    student.phone  = params[:phone]
-    student.github = params[:github]
+    Activity.create(
+      student_id:  student.id,
+      user_id:     params[:user_id],
+      description: "added student"
+      )
 
-    student.save
     student
   end
 end

@@ -10,12 +10,20 @@
       %p g. #{link_to @student.github, @student.github}
   .row.profile
     .span3
-      %h4 File
-      %hr
-      %p Timeline
+      %h6 FILE
+      %p= link_to "Timeline", student_path(@student.id)
       %p Evaluations
       %p Assessments
       %p 1-on-1s
     .span8
-      %h4 Timeline
-      %hr
+      %h6 TIMELINE
+      -if @activities.count == 0
+        .activity
+          %p.description.error This student doesn't have any activity yet.
+      - else
+        - @activities.each do |activity|
+          .activity
+            = image_tag activity.user.image, class: "img-activity"
+            .activity-description
+              %h6.time= format_time(activity.created_at)
+              %p.description <b>#{activity.user.name}</b> #{activity.description}.

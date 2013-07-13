@@ -9,6 +9,8 @@ class User
   field :uid
   field :oauth_token
 
+  has_many :activities
+
   def self.from_omniauth(params)
     find_user(params) || create_user(params)
   end

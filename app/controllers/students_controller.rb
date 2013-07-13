@@ -2,16 +2,15 @@ class StudentsController < ApplicationController
   before_action :authenticate_user
 
   def index
-    @students = Student.all
   end
 
   def show
-    @student = Student.find(params[:id])
+    @student    = Student.find(params[:id])
+    @activities = @student.activities
   end
 
   def new
-    @students = Student.all
-    @student  = Student.new
+    @student = Student.new
   end
 
   def create

@@ -1,16 +1,13 @@
 .container
-  .row
+  .row.profile
     .span3
-      %h4 Students
-      %hr
-      
+      %h6 STUDENTS      
       - @students.each do |student|
         %p= link_to "#{student.name}", student_path(student.id)
 
-      %p= link_to "Add Student", new_student_path
+      = link_to "ADD STUDENT", new_student_path, class: "btn btn-success btn-mini"
     .span8
-      %h4 Add a Student
-      %hr
+      %h6 ADD A STUDENT
       = form_for @student do |f|
         %h5 Student Name (Required)
         = f.text_field :name
@@ -20,4 +17,5 @@
         = f.telephone_field :phone
         %h5 Github (URL)
         = f.url_field :github
+        = f.hidden_field :user_id, value: current_user.id
         = f.submit "Add", class: "btn btn-success form"

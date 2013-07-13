@@ -1,5 +1,10 @@
 @import "bootstrap";
 
+p {
+  font-weight: lighter;
+  font-size: 14px;
+}
+
 // HOME
 
 .home {
@@ -44,9 +49,10 @@ img.brand {
   float: right;
 }
 
-p.nav {
-  color: gray;
-  padding-top: 15px;
+.navbar .nav > li {
+  float: left;
+  position: relative;
+  top: 5px;
 }
 
 a.nav {
@@ -58,6 +64,11 @@ img.nav {
   height: 30px;
   position: relative;
   top: 8px;
+}
+
+p.nav {
+  color: gray;
+  padding-top: 15px;
 }
 
 // ALERTS
@@ -80,12 +91,17 @@ img.nav {
 
 // FORM
 
+form {
+  margin: 0 0 50px;
+}
+
 .btn.form {
   position: relative;
   top: 40px;
   left: -224px;
   width: 220px;
 }
+
 
 // PROFILE
 
@@ -94,4 +110,44 @@ img.nav {
   border: 1px solid #eeeeee;
   border-radius: 10px;
   padding: 5px;
+}
+
+// ACTIVITY
+
+.activity {
+  display: block;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  height: 50px;
+}
+
+.activity-description {
+  padding: 10px;
+  position: relative;
+  left: 50px;
+  bottom: 45px;
+}
+
+.error {
+  position: relative;
+  top: 0px;
+}
+
+.img-activity {
+  border: 1px solid #eeeeee;
+  padding: 2px;
+  height: 40px;
+}
+
+h6.time {
+  bottom: 20px;
+  font-size: 10px;
+  font-weight: bold;
+  position: relative;
+}
+
+p.description {
+  font-size: 16px;
+  position: relative;
+  bottom: 30px;
 }

@@ -1,14 +1,15 @@
 .container
-  .row
+  .row.profile
     .span3
-      %h4 Students
-      %hr
-
+      %h6 STUDENTS
       - @students.each do |student|
         %p= link_to "#{student.name}", student_path(student.id)
-
-      %hr
-      %p= link_to "Add Student", new_student_path
+      = link_to "ADD STUDENT", new_student_path, class: "btn btn-success btn-mini"
     .span8
-      %h4 Timeline
-      %hr
+      %h6 TIMELINE
+      - @activities.each do |activity|
+        .activity
+          = image_tag activity.user.image, class: "img-activity"
+          .activity-description
+            %h6.time= format_time(activity.created_at)
+            %p.description <b>#{activity.user.name}</b> #{activity.description} <b>#{activity.student.name}</b>.
