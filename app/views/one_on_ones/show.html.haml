@@ -1,0 +1,15 @@
+.container
+  = render "shared/student"
+  .row.profile
+    = render "shared/student_side_nav"
+    .span8
+      %h5 ONE-ON-ONE
+      %hr
+      %h6 DATE
+      %p #{format_time(@one_on_one.created_at)}
+      %h6 INSTRUCTOR
+      %p #{@one_on_one.user.name}
+      %hr
+      %h6 OBSERVATIONS
+      = link_to "EDIT", edit_student_one_on_one_path(@student.id, @one_on_one.id), class: "btn btn-mini btn-success btn-one-on-one"
+      %p= @one_on_one.description

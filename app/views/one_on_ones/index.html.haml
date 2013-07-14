@@ -1,0 +1,27 @@
+.container
+  = render "shared/student"
+  .row.profile
+    = render "shared/student_side_nav"
+    .span8
+      %h6 ONE-ON-ONES
+      = link_to "NEW", new_student_one_on_one_path(@student.id), class: "btn btn-mini btn-success btn-one-on-one"
+      -if @one_on_ones.count == 0
+        .activity
+          %p.description.error This student doesn't have any on-on-ones yet.
+      - else
+        %table.table.table-bordered.table-striped.table-one-on-one
+          %thead
+            %tr
+              %th CREATED
+              %th INSTRUCTOR
+              %th ACTIONS
+          %tbody
+          - @one_on_ones.each do |one_on_one|
+            %tr
+              %td= format_time(one_on_one.created_at)
+              %td= one_on_one.user.name
+              %td
+                .btn-group
+                  = link_to "OPEN", student_one_on_one_path(@student.id, one_on_one.id), class: "btn btn-mini"
+                  = link_to "EDIT", edit_student_one_on_one_path(@student.id, one_on_one.id), class: "btn btn-mini"
+                  = link_to "DELETE", student_one_on_one_path(@student.id, one_on_one.id), class: "btn btn-mini"

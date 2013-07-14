@@ -1,0 +1,6 @@
+.span3
+  %h6 FILE
+  %p= link_to "Timeline", student_path(@student.id)
+  %p Evaluations
+  %p Assessments
+  %p= link_to "One-on-ones", student_one_on_ones_path(@student.id)

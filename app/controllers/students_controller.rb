@@ -6,7 +6,7 @@ class StudentsController < ApplicationController
 
   def show
     @student    = Student.find(params[:id])
-    @activities = @student.activities
+    @activities = @student.activities.desc(:created_at)
   end
 
   def new

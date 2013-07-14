@@ -10,6 +10,7 @@ class User
   field :oauth_token
 
   has_many :activities
+  has_many :one_on_ones
 
   def self.from_omniauth(params)
     find_user(params) || create_user(params)

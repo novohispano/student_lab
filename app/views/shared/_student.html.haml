@@ -1,0 +1,9 @@
+.row.profile
+  .span3
+    %h6 STUDENT PROFILE
+    %h3 #{@student.name}
+  .span8
+    %h6 CONTACT INFO
+    %p e. #{mail_to @student.email}
+    %p p. #{@student.phone}
+    %p g. #{link_to @student.github, @student.github}

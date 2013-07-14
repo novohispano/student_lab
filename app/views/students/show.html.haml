@@ -1,20 +1,7 @@
 .container
+  = render "shared/student"
   .row.profile
-    .span3
-      %h6 STUDENT PROFILE
-      %h3 #{@student.name}
-    .span8
-      %h6 CONTACT INFO
-      %p e. #{mail_to @student.email}
-      %p p. #{@student.phone}
-      %p g. #{link_to @student.github, @student.github}
-  .row.profile
-    .span3
-      %h6 FILE
-      %p= link_to "Timeline", student_path(@student.id)
-      %p Evaluations
-      %p Assessments
-      %p 1-on-1s
+    = render "shared/student_side_nav"
     .span8
       %h6 TIMELINE
       -if @activities.count == 0
@@ -26,4 +13,4 @@
             = image_tag activity.user.image, class: "img-activity"
             .activity-description
               %h6.time= format_time(activity.created_at)
-              %p.description <b>#{activity.user.name}</b> #{activity.description}.
+              %p.description <b>#{activity.user.name}</b> #{activity.description} <b>#{activity.student.name}</b>.

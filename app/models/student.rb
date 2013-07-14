@@ -11,6 +11,7 @@ class Student
   validates :email, presence: true, uniqueness: true
 
   has_many :activities
+  has_many :one_on_ones
 
   def self.create_student(params)
     student = Student.create(

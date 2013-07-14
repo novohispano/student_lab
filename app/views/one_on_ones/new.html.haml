@@ -1,0 +1,12 @@
+.container
+  = render "shared/student"
+  .row.profile
+    = render "shared/student_side_nav"
+    .span8
+      %h5 NEW ONE-ON-ONE
+      %hr
+      %h6 OBSERVATIONS
+      = form_for(@one_on_one, url: student_one_on_ones_path(@student.id)) do |f|
+        = f.submit "SAVE", class: "btn btn-mini btn-success btn-one-on-one"
+        = f.text_area :description, class: "one-on-one"
+        = f.hidden_field :user_id, value: current_user.id
