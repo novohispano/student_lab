@@ -7,11 +7,11 @@ class OneOnOne
   belongs_to :student
   belongs_to :user
 
-  def self.create_one_on_one(params)
+  def create_one_on_one(params)
     one_on_one = OneOnOne.create(
       student_id:  params[:student_id],
       user_id:     params[:one_on_one][:user_id],
-      description: params[:one_on_one][:description]
+      description: format_description(params[:one_on_one][:description])
       )
 
     Activity.create(
@@ -24,7 +24,7 @@ class OneOnOne
   end
 
   def update_one_on_one(params)
-    self.description = params[:one_on_one][:description]
+    self.description = format_description(params[:one_on_one][:description])
     self.save
 
     Activity.create(
@@ -44,5 +44,9 @@ class OneOnOne
       user_id:     params[:user_id],
       description: "deleted a one-on-one session for student"
       )
+  end
+
+  def format_description(description)
+    description.gsub("\n", "<br>").html_safe
   end
 end

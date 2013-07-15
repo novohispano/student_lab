@@ -13,5 +13,5 @@
       %h6 OBSERVATIONS
       = form_for(@one_on_one, url: "/students/#{@student.id}/one_on_ones/#{@one_on_one.id}") do |f|
         = f.submit "SAVE", class: "btn btn-mini btn-success btn-one-on-one"
-        = f.text_area :description, class: "one-on-one"
+        = f.text_area :description, value: breaks_to_line_breaks(@one_on_one.description), class: "one-on-one"
         = f.hidden_field :user_id, value: current_user.id

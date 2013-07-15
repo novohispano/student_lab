@@ -2,7 +2,7 @@ class OneOnOnesController < ApplicationController
   before_action :student
 
   def index
-    @one_on_ones = @student.one_on_ones
+    @one_on_ones = @student.one_on_ones.desc(:created_at)
   end
 
   def show
@@ -14,10 +14,10 @@ class OneOnOnesController < ApplicationController
   end
 
   def create
-    one_on_one = OneOnOne.create_one_on_one(params)
+    one_on_one = OneOnOne.new.create_one_on_one(params)
 
     if one_on_one.save
-      redirect_to student_one_on_ones_path(@student.id), notice: "A new one on one session was created for student #{@student.name}."
+      redirect_to student_one_on_ones_path(@student.id), notice: "A new one-on-one session was created for student #{@student.name}."
     else
       redirect_to new_student_one_on_one_path, alert: "There was a problem creating your one-on-one session. Please try again."
     end
