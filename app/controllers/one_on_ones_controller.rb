@@ -38,6 +38,13 @@ class OneOnOnesController < ApplicationController
     end
   end
 
+  def destroy
+    one_on_one = OneOnOne.find(params[:id])
+    one_on_one.destroy_one_on_one(params)
+
+    redirect_to student_one_on_ones_path(@student.id), notice: "The session for student #{@student.name} was deleted."
+  end
+
   private
 
   def student

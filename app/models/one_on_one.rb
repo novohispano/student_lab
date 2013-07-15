@@ -35,4 +35,14 @@ class OneOnOne
 
     self
   end
+
+  def destroy_one_on_one(params)
+    self.destroy
+
+    Activity.create(
+      student_id:  params[:student_id],
+      user_id:     params[:user_id],
+      description: "deleted a one-on-one session for student"
+      )
+  end
 end

@@ -24,4 +24,4 @@
                 .btn-group
                   = link_to "OPEN", student_one_on_one_path(@student.id, one_on_one.id), class: "btn btn-mini"
                   = link_to "EDIT", edit_student_one_on_one_path(@student.id, one_on_one.id), class: "btn btn-mini"
-                  = link_to "DELETE", student_one_on_one_path(@student.id, one_on_one.id), class: "btn btn-mini"
+                  = link_to "DELETE", student_one_on_one_path(@student.id, one_on_one.id, user_id: current_user.id), method: :delete, confirm: "Do you really want to delete this session?", class: "btn btn-mini"
