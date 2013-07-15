@@ -12,4 +12,4 @@
           = image_tag activity.user.image, class: "img-activity"
           .activity-description
             %h6.time= format_time(activity.created_at)
-            %p.description <b>#{activity.user.name}</b> #{activity.description} <b>#{link_to activity.student.name, student_path(activity.student.id)}</b>.
+            %p.description= raw description(activity)

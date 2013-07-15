@@ -12,4 +12,4 @@
       %hr
       %h6 OBSERVATIONS
       = link_to "EDIT", edit_student_one_on_one_path(@student.id, @one_on_one.id), class: "btn btn-mini btn-success btn-one-on-one"
-      %p= raw format_description(@one_on_one.description)
+      %p= raw @one_on_one.description

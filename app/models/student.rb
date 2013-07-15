@@ -22,9 +22,9 @@ class Student
       )
 
     Activity.create(
-      student_id:  student.id,
-      user_id:     params[:user_id],
-      description: "added student"
+      student_id: student.id,
+      user_id:    params[:user_id],
+      action:     "added student"
       )
 
     student

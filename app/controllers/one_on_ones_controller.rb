@@ -32,9 +32,9 @@ class OneOnOnesController < ApplicationController
     one_on_one.update_one_on_one(params)
 
     if one_on_one.save
-      redirect_to student_one_on_one_path(@student.id, one_on_one.id), notice: "The session for student #{@student.name} was updated."
+      redirect_to student_one_on_one_path(@student.id, one_on_one.id), notice: "The one-on-one session for student #{@student.name} was updated."
     else
-      redirect_to new_student_one_on_one_path, alert: "There was a problem updating your session. Please try again."
+      redirect_to new_student_one_on_one_path, alert: "There was a problem updating your one-on-one session. Please try again."
     end
   end
 
@@ -42,7 +42,7 @@ class OneOnOnesController < ApplicationController
     one_on_one = OneOnOne.find(params[:id])
     one_on_one.destroy_one_on_one(params)
 
-    redirect_to student_one_on_ones_path(@student.id), notice: "The session for student #{@student.name} was deleted."
+    redirect_to student_one_on_ones_path(@student.id), notice: "The one-on-one session for student #{@student.name} was deleted."
   end
 
   private
