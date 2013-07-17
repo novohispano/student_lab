@@ -1,0 +1,6 @@
+.container
+  = render "shared/student_edit"
+  .row.profile
+    = render "shared/student_side_nav"
+    = render "shared/activity"
+  = link_to "REMOVE STUDENT", student_path(@student.id, student: { user_id: current_user.id }), method: :delete, confirm: "Do you want to remove #{@student.name} from StudentLab?", class: "btn btn-mini btn-student-remove"

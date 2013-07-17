@@ -12,7 +12,7 @@ describe Student do
 
   context "when given correct params" do
     it "creates a student" do
-      result = Student.create_student(params)
+      result = Student.new.create_student(params)
 
       expect(result).to be_valid
       expect(result.class).to eq Student
@@ -28,7 +28,7 @@ describe Student do
       invalid_params        = params
       invalid_params[:name] = nil
 
-      result = Student.create_student(invalid_params)
+      result = Student.new.create_student(invalid_params)
 
       expect(result).not_to be_valid
     end
@@ -37,7 +37,7 @@ describe Student do
       invalid_params        = params
       invalid_params[:email] = nil
 
-      result = Student.create_student(invalid_params)
+      result = Student.new.create_student(invalid_params)
 
       expect(result).not_to be_valid
     end
@@ -45,23 +45,23 @@ describe Student do
 
   context "when the student already exists" do
     it "doesn't create a student when the name already exists" do
-      Student.create_student(params)
+      Student.new.create_student(params)
       
       different_params = params
       different_params[:email] = "farm@example.com"
 
-      result = Student.create_student(different_params)
+      result = Student.new.create_student(different_params)
 
       expect(result).not_to be_valid
     end
 
     it "doesn't create a student when the email already exists" do
-      Student.create_student(params)
+      Student.new.create_student(params)
       
       different_params = params
       different_params[:name] = "John Goat"
 
-      result = Student.create_student(different_params)
+      result = Student.new.create_student(different_params)
 
       expect(result).not_to be_valid
     end
