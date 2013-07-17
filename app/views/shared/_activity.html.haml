@@ -1,0 +1,12 @@
+.span8
+  %h6 TIMELINE
+  -if @activities.count == 0
+    .activity
+      %p.description.error There is no activity yet.
+  - else
+    - @activities.each do |activity|
+      .activity
+        = image_tag activity.user.image, class: "img-activity"
+        .activity-description
+          %h6.time= format_time(activity.created_at)
+          %p.description= raw description(activity)

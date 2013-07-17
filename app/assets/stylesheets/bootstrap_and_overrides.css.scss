@@ -112,6 +112,29 @@ form {
   padding: 5px;
 }
 
+.btn.btn-student {
+  position: relative;
+  float: right;
+  bottom: 120px;
+  left: 60px;
+}
+
+.btn.btn-student-edit {
+  position: relative;
+  float: right;
+  bottom: 200px;
+  left: 60px;
+}
+
+.btn.btn-student-remove {
+  display: block;
+  margin: 0 auto;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  position: relative;
+  width: 15%;
+}
+
 // ACTIVITY
 
 .activity {
@@ -152,7 +175,7 @@ p.description {
   bottom: 30px;
 }
 
-// ONE ON ONE
+// ONE-ON-ONE
 
 .btn-one-on-one {
   float: right;

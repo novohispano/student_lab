@@ -1,0 +1,16 @@
+.row.profile
+  = form_for(@student, url: "/students/#{@student.id}") do |f|
+    = f.hidden_field :user_id, value: current_user.id
+    .span3
+      %h6 STUDENT PROFILE
+      %p Name (Required)
+      = f.text_field :name, value: @student.name
+    .span8
+      %h6 CONTACT INFO
+      %p Email (Required)
+      = f.text_field :email, value: @student.email
+      %p Phone
+      = f.text_field :phone, value: @student.phone
+      %p Github
+      = f.text_field :github, value: @student.github
+      = f.submit "SAVE", class: "btn btn-mini btn-success btn-student-edit"

@@ -4,6 +4,7 @@
     %h3 #{@student.name}
   .span8
     %h6 CONTACT INFO
-    %p e. #{mail_to @student.email}
-    %p p. #{@student.phone}
-    %p g. #{link_to @student.github, @student.github}
+    %p email: #{mail_to @student.email}
+    %p phone: #{@student.phone}
+    %p github: #{link_to @student.github, @student.github}
+    = link_to "EDIT", edit_student_path(@student.id), class: "btn btn-mini btn-success btn-student"

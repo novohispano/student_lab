@@ -17,7 +17,7 @@ class OneOnOnesController < ApplicationController
     one_on_one = OneOnOne.new.create_one_on_one(params)
 
     if one_on_one.save
-      redirect_to student_one_on_ones_path(@student.id), notice: "A new one-on-one session was created for student #{@student.name}."
+      redirect_to student_one_on_one_path(@student.id, one_on_one.id), notice: "A new one-on-one session was created for student #{@student.name}."
     else
       redirect_to new_student_one_on_one_path, alert: "There was a problem creating your one-on-one session. Please try again."
     end
@@ -34,7 +34,7 @@ class OneOnOnesController < ApplicationController
     if one_on_one.save
       redirect_to student_one_on_one_path(@student.id, one_on_one.id), notice: "The one-on-one session for student #{@student.name} was updated."
     else
-      redirect_to new_student_one_on_one_path, alert: "There was a problem updating your one-on-one session. Please try again."
+      redirect_to edit_student_one_on_one_path(@student.id, one_on_one.id), alert: "There was a problem updating your one-on-one session. Please try again."
     end
   end
 
