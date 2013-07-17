@@ -9,8 +9,8 @@
       %h6 CONTACT INFO
       %p Email (Required)
       = f.text_field :email, value: @student.email
-      %p Phone
+      %p Phone (10 digits only)
       = f.text_field :phone, value: @student.phone
-      %p Github
+      %p Github (URL)
       = f.text_field :github, value: @student.github
       = f.submit "SAVE", class: "btn btn-mini btn-success btn-student-edit"
