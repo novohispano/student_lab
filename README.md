@@ -1,8 +1,8 @@
-## StudentLab
+# StudentLab
 
 StudentLab is a student CRM app built for JumpstartLab. You can keep track of the interactions that your instructors have with your students, and easily create one-on-one sessions, assessments and evaluations.
 
-### Setup
+## Setup
 
 1. Clone this repo.
 2. Run bundle install
@@ -12,6 +12,6 @@ StudentLab is a student CRM app built for JumpstartLab. You can keep track of th
 
 StudentLab runs on MongoDB, so you won't need to migrate anything.
 
-### Ruby / Rails
+## Ruby / Rails
 
 This app was built on Ruby 2.0 and Rails 4.0 by Jorge Téllez at gSchool.
