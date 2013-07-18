@@ -18,8 +18,6 @@ gem 'figaro'
 group :test do
   gem 'database_cleaner'
   gem 'rspec-rails'
-  gem 'capybara'
-  gem 'capybara-webkit'
   gem 'simplecov'
 end
 
