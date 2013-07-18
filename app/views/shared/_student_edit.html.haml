@@ -1,6 +1,9 @@
 .row.profile
   = form_for(@student, url: "/students/#{@student.id}") do |f|
     = f.hidden_field :user_id, value: current_user.id
+    - if @student.errors.any?
+      - @student.errors.full_messages.each do |msg|
+        %p= msg
     .span3
       %h6 STUDENT PROFILE
       %p Name (Required)

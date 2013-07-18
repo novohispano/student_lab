@@ -5,7 +5,7 @@ describe Student do
     {
       name:   "Mr. Goat",
       email:  "goat@example.com",
-      phone:  "12345679",
+      phone:  "1234567890",
       github: "http://github.com/novohispano"
     }
   end
@@ -18,7 +18,7 @@ describe Student do
       expect(result.class).to eq Student
       expect(result.name).to eq "Mr. Goat"
       expect(result.email).to eq "goat@example.com"
-      expect(result.phone).to eq "12345679"
+      expect(result.phone).to eq "1234567890"
       expect(result.github).to eq "http://github.com/novohispano"
     end
   end

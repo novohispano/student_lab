@@ -9,6 +9,8 @@ class Student
 
   validates :name,  presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true
+  validates :phone, length: { minimum: 10, maximum: 10, message: "The phone number has to be 10 digits long." }, 
+                    format: { with: /[0-9]+/, message: "The phone number has to be only digits." }
 
   has_many :one_on_ones
   has_many :activities, dependent: :destroy
