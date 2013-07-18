@@ -17,6 +17,6 @@ class ApplicationController < ActionController::Base
   end
 
   def students
-    @students = Student.all.asc(:name)
+    @students ||= Student.all.asc(:name)
   end
 end

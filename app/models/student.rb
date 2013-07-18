@@ -23,10 +23,7 @@ class Student
       github: params[:github]
       )
 
-    if student.save
-      action = "added"
-      student.create_activity(action, params)
-    end
+    student.create_activity("added", params) if student.save
 
     student
   end
@@ -41,17 +38,13 @@ class Student
       github: params[:github]
       )
 
-    if self.save
-      action = "updated"
-      self.create_activity(action, params)
-    end
+    self.create_activity("updated", params) if self.save
 
     self
   end
 
   def destroy_student(params)
-    action = "deleted"
-    self.create_activity(action, params)
+    self.create_activity("deleted", params)
 
     self.destroy
   end

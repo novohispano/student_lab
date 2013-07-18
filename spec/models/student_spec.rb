@@ -25,7 +25,8 @@ describe Student do
 
       it "creates a student with an activity" do
         student = Student.new.create_student(params)
-        result  = student.activities.last
+        
+        result = student.activities.last
 
         expect(result).not_to be_nil
         expect(result.student_id).to eq student.id
@@ -48,7 +49,8 @@ describe Student do
 
       it "updates a student" do
         student = Student.new.create_student(params)
-        result  = student.update_student(diff_params)
+        
+        result = student.update_student(diff_params)
 
         expect(result).to be_valid
         expect(result.name).to eq "Mr. Cow"
@@ -60,8 +62,8 @@ describe Student do
       it "updates a student with an activity" do
         student = Student.new.create_student(params)
         student.update_student(diff_params)
-        
-        result  = student.activities.last
+
+        result = student.activities.last
 
         expect(result).not_to be_nil
         expect(result.student_id).to eq student.id
@@ -74,8 +76,8 @@ describe Student do
         student    = Student.new.create_student(params)
         student_id = student.id 
         student.destroy_student(params)
-        
-        result     = Student.find(student_id)
+
+        result = Student.find(student_id)
 
         expect(result).to be_nil
       end
@@ -124,7 +126,7 @@ describe Student do
     it "doesn't create a student when the name already exists" do
       Student.new.create_student(params)
       
-      different_params = params
+      different_params         = params
       different_params[:email] = "farm@example.com"
 
       result = Student.new.create_student(different_params)
@@ -135,7 +137,7 @@ describe Student do
     it "doesn't create a student when the email already exists" do
       Student.new.create_student(params)
       
-      different_params = params
+      different_params        = params
       different_params[:name] = "John Goat"
 
       result = Student.new.create_student(different_params)

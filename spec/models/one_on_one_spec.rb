@@ -33,7 +33,8 @@ describe Student do
 
     it "creates an activity" do
       one_on_one = OneOnOne.new.create_one_on_one(params)
-      result     = one_on_one.activities.last
+      
+      result = one_on_one.activities.last
 
       expect(result).not_to be_nil
       expect(result.one_on_one).to eq one_on_one
@@ -45,7 +46,8 @@ describe Student do
     it "updates a one-on-one" do
       one_on_one  = OneOnOne.new.create_one_on_one(params)
       diff_params = { one_on_one: { description: "I love cows." } }
-      result      = one_on_one.update_one_on_one(diff_params)
+      
+      result = one_on_one.update_one_on_one(diff_params)
 
       expect(result).to be_valid
       expect(result.student_id).to eq @student.id
@@ -57,7 +59,8 @@ describe Student do
       one_on_one  = OneOnOne.new.create_one_on_one(params)
       diff_params = { one_on_one: { description: "I love cows." } }
       one_on_one  = one_on_one.update_one_on_one(diff_params)
-      result      = one_on_one.activities.last
+      
+      result = one_on_one.activities.last
 
       expect(result).not_to be_nil
       expect(result.one_on_one).to eq one_on_one
@@ -70,7 +73,8 @@ describe Student do
       one_on_one    = OneOnOne.new.create_one_on_one(params)
       one_on_one_id = one_on_one.id
       one_on_one.destroy_one_on_one(params)
-      result        = OneOnOne.find(one_on_one_id)
+
+      result = OneOnOne.find(one_on_one_id)
 
       expect(result).to be_nil
     end

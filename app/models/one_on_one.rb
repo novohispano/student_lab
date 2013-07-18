@@ -15,10 +15,7 @@ class OneOnOne
       description: format_description(params[:one_on_one][:description])
       )
 
-    if one_on_one.save
-      action = "created"
-      one_on_one.create_activity(action, params)
-    end
+    one_on_one.create_activity("created", params) if one_on_one.save
 
     one_on_one
   end
@@ -28,17 +25,13 @@ class OneOnOne
       description: format_description(params[:one_on_one][:description])
       )
 
-    if self.save
-      action = "updated"
-      self.create_activity(action, params)
-    end
+    self.create_activity("updated", params) if self.save
 
     self
   end
 
   def destroy_one_on_one(params)
-    action = "deleted"
-    self.create_activity(action, params)
+    self.create_activity("deleted", params)
 
     self.destroy
   end
