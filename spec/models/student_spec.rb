@@ -11,15 +11,74 @@ describe Student do
   end
 
   context "when given correct params" do
-    it "creates a student" do
-      result = Student.new.create_student(params)
+    context "#create_student" do
+      it "creates a student" do
+        result = Student.new.create_student(params)
 
-      expect(result).to be_valid
-      expect(result.class).to eq Student
-      expect(result.name).to eq "Mr. Goat"
-      expect(result.email).to eq "goat@example.com"
-      expect(result.phone).to eq "1234567890"
-      expect(result.github).to eq "http://github.com/novohispano"
+        expect(result).to be_valid
+        expect(result.class).to eq Student
+        expect(result.name).to eq "Mr. Goat"
+        expect(result.email).to eq "goat@example.com"
+        expect(result.phone).to eq "1234567890"
+        expect(result.github).to eq "http://github.com/novohispano"
+      end
+
+      it "creates a student with an activity" do
+        student = Student.new.create_student(params)
+        result  = student.activities.last
+
+        expect(result).not_to be_nil
+        expect(result.student_id).to eq student.id
+        expect(result.action).to eq "added"
+      end
+    end
+
+    context "#update_student" do
+      def diff_params
+        {
+          student: 
+          {
+            name:   "Mr. Cow",
+            email:  "cow@example.com",
+            phone:  "9876543210",
+            github: "http://github.com/mu"
+          }
+        }
+      end
+
+      it "updates a student" do
+        student = Student.new.create_student(params)
+        result  = student.update_student(diff_params)
+
+        expect(result).to be_valid
+        expect(result.name).to eq "Mr. Cow"
+        expect(result.email).to eq "cow@example.com"
+        expect(result.phone).to eq "9876543210"
+        expect(result.github).to eq "http://github.com/mu"
+      end
+
+      it "updates a student with an activity" do
+        student = Student.new.create_student(params)
+        student.update_student(diff_params)
+        
+        result  = student.activities.last
+
+        expect(result).not_to be_nil
+        expect(result.student_id).to eq student.id
+        expect(result.action).to eq "updated"
+      end
+    end
+
+    context "#destroy_student" do
+      it "destroys a student" do
+        student    = Student.new.create_student(params)
+        student_id = student.id 
+        student.destroy_student(params)
+        
+        result     = Student.find(student_id)
+
+        expect(result).to be_nil
+      end
     end
   end
 
@@ -34,8 +93,26 @@ describe Student do
     end
 
     it "doesn't create a student when email doesn't exist" do
-      invalid_params        = params
+      invalid_params         = params
       invalid_params[:email] = nil
+
+      result = Student.new.create_student(invalid_params)
+
+      expect(result).not_to be_valid
+    end
+
+    it "doesn't create a student when a phone is less than 10 digits" do
+      invalid_params         = params
+      invalid_params[:phone] = "1232"
+
+      result = Student.new.create_student(invalid_params)
+
+      expect(result).not_to be_valid
+    end
+
+    it "doesn't create a student when a phone number containes non-digits" do
+      invalid_params         = params
+      invalid_params[:phone] = "!@#$%^}MNC"
 
       result = Student.new.create_student(invalid_params)
 
