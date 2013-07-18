@@ -21,8 +21,10 @@ class Student
       github: params[:github]
       )
 
-    action = "added"
-    student.create_activity(action, params)
+    if student.save
+      action = "added"
+      student.create_activity(action, params)
+    end
 
     student
   end
@@ -37,8 +39,10 @@ class Student
       github: params[:github]
       )
 
-    action = "updated"
-    self.create_activity(action, params)
+    if self.save
+      action = "updated"
+      self.create_activity(action, params)
+    end
 
     self
   end
