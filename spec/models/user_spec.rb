@@ -6,10 +6,11 @@ describe User do
 
     params.uid = "123456"
 
-    params.info       = OpenStruct.new
-    params.info.name  = "Mr. Goat"
-    params.info.email = "goat@example.com"
-    params.info.image = "http://example.com"
+    params.info          = OpenStruct.new
+    params.info.nickname = "novohispano"
+    params.info.name     = "Mr. Goat"
+    params.info.email    = "goat@example.com"
+    params.info.image    = "http://example.com"
 
     params.credentials       = OpenStruct.new
     params.credentials.token = "secret_token"
@@ -30,6 +31,7 @@ describe User do
     expect(result.class).to be User
     expect(result).to be_valid
     expect(result.uid).to eq "123456"
+    expect(result.nickname).to eq "novohispano"
     expect(result.name).to eq "Mr. Goat"
     expect(result.email).to eq "goat@example.com"
     expect(result.image).to eq "http://example.com"
@@ -44,5 +46,10 @@ describe User do
     new_count = User.all.count
 
     expect(original_count).to eq new_count
+  end
+
+  it "knows if a user is an admin" do
+    result = User.create_user(params)
+    expect(result.admin?).to eq true
   end
 end

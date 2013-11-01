@@ -1,5 +1,6 @@
 class OneOnOnesController < ApplicationController
-  before_action :student
+  before_action :authenticate_user,
+                :student
 
   def index
     @one_on_ones = @student.one_on_ones.desc(:created_at)

@@ -2,11 +2,12 @@ class User
   include Mongoid::Document
   include Mongoid::Timestamps
 
+  field :provider
+  field :uid
+  field :nickname
   field :name
   field :email
   field :image
-  field :provider
-  field :uid
   field :oauth_token
 
   has_many :activities
@@ -28,6 +29,7 @@ class User
 
     user.provider    = params.provider,
     user.uid         = params.uid,
+    user.nickname    = params.info.nickname
     user.name        = params.info.name
     user.email       = params.info.email
     user.image       = params.info.image
@@ -35,5 +37,15 @@ class User
 
     user.save
     user
+  end
+
+  def admin?
+    admin_users.include?(self.nickname)
+  end
+
+  private
+
+  def admin_users
+    %w[novohispano burtlo kytrinyx jcasimir susannahcompton]
   end
 end

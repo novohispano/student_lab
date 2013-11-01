@@ -4,7 +4,7 @@
       = image_tag "http://jumpstartlab.com/images/logo-mark.png", class: "brand"
       = link_to "StudentLab", root_path, class: "brand"
       .nav-collapse.collapse
-        - if current_user
+        - if authorized_user
           %ul.nav
             %li.dropdown
               %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
