@@ -2,7 +2,8 @@ production:
   sessions:
     default:
       uri: <%= ENV['MONGOHQ_URL'] %>
-
+  options:
+    raise_not_found_error: false
 development:
   sessions:
     default:
