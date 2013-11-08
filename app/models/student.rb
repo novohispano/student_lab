@@ -9,8 +9,6 @@ class Student
 
   validates :name,  presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true
-  validates :phone, length: { minimum: 10, maximum: 10, message: "The phone number has to be 10 digits long." }, 
-                    format: { with: /[0-9]+/, message: "The phone number has to be only digits." }
 
   has_many :one_on_ones
   has_many :activities, dependent: :destroy
@@ -34,7 +32,7 @@ class Student
     self.update_attributes(
       name:   params[:name],
       email:  params[:email],
-      phone:  params[:phone],
+      phone:  clean_phone(params[:phone]),
       github: params[:github]
       )
 
@@ -57,5 +55,11 @@ class Student
       )
 
     activity.save
+  end
+
+  private
+
+  def clean_phone(number)
+    number.gsub(/\D/, "")[0..10]
   end
 end

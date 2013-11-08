@@ -5,6 +5,6 @@
   .span8
     %h6 CONTACT INFO
     %p email: #{mail_to @student.email}
-    %p phone: #{@student.phone}
+    %p phone: #{format_phone(@student.phone)}
     %p github: #{link_to @student.github, @student.github}
     = link_to "EDIT", edit_student_path(@student.id), class: "btn btn-mini btn-success btn-student"

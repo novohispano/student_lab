@@ -5,10 +5,14 @@ module ApplicationHelper
 
   def description(activity)
     if activity.one_on_one
-      build_one_on_one(activity) 
+      build_one_on_one(activity)
     else
       build_student(activity)
     end
+  end
+
+  def format_phone(input)
+    "#{input[0..2]}.#{input[3..5]}.#{input[5..8]}"
   end
 
   private
