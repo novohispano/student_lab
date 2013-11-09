@@ -4,7 +4,7 @@
       %h6 STUDENTS
       - @students.each do |student|
         %p
-          = gravatar_image_tag(student.email, class: "img-border", gravatar: { size: 25 })
-          =link_to "#{student.name}", student_path(student.id)
+          = gravatar_image_tag(student.email, class: "img-circle", gravatar: { size: 25 })
+          =link_to "#{student.name}", student_path(student.id), class: "student-name"
       = link_to "ADD STUDENT", new_student_path, class: "btn btn-success btn-mini"
     = render "shared/activity"

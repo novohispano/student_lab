@@ -105,6 +105,13 @@ form {
 
 // PROFILE
 
+.contact-info {
+  position: relative;
+    top: 22px;
+    right: 30px;
+  line-height: 14px;
+}
+
 .row.profile {
   margin-bottom: 20px;
   border: 1px solid #eeeeee;
@@ -206,4 +213,10 @@ textarea.one-on-one{
 
 .span3.side-nav {
   margin-bottom: 10px;
+}
+
+.student-name {
+  position: relative;
+    left: 2px;
+    top: 2px;
 }

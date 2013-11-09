@@ -1,13 +1,11 @@
 .row.profile
   .span2
     %h6 STUDENT PROFILE
-    %h3 #{@student.name}
-  .span2
-    %br
-    = gravatar_image_tag(@student.email, class: "img-border", gravatar: { size: 100 })
+    %h3= gravatar_image_tag(@student.email, class: "img-border", gravatar: { size: 100 })
   .span7
-    %h6 CONTACT INFO
-    %p email: #{mail_to @student.email}
-    %p phone: #{format_phone(@student.phone)}
-    %p github: #{link_to @student.github, @student.github}
-    = link_to "EDIT", edit_student_path(@student.id), class: "btn btn-mini btn-success btn-student"
+    .contact-info
+      %h3 #{@student.name}
+      %p email: #{mail_to @student.email}
+      %p phone: #{format_phone(@student.phone)}
+      %p github: #{link_to @student.github, @student.github}
+      = link_to "EDIT", edit_student_path(@student.id), class: "btn btn-mini btn-success btn-student"
