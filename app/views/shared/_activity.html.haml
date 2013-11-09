@@ -10,3 +10,4 @@
         .activity-description
           %h6.time= format_time(activity.created_at)
           %p.description= raw description(activity)
+    = paginate @activities

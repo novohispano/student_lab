@@ -14,6 +14,7 @@ gem 'haml-rails'
 gem 'haml'
 gem 'omniauth-github'
 gem 'figaro'
+gem 'kaminari'
 
 group :test do
   gem 'database_cleaner'
