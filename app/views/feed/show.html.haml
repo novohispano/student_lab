@@ -3,6 +3,12 @@
     .span3.side-nav
       %h6 STUDENTS
       - @students.each do |student|
-        %p= link_to "#{student.name}", student_path(student.id)
+        %p
+          = gravatar_image_tag(student.email, class: "img-border", gravatar: { size: 25 })
+          =link_to "#{student.name}", student_path(student.id)
       = link_to "ADD STUDENT", new_student_path, class: "btn btn-success btn-mini"
-    = render "shared/activity"
+    .span8
+      %h6 TIMELINE
+      .activities
+        = render "shared/activity"
+      = paginate @activities

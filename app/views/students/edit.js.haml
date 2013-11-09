@@ -1,0 +1,6 @@
+$('.activities').append("#{escape_javascript(render 'shared/activity')}");
+- if @activities.last_page?
+  $('.pagination').remove();
+- else
+  $('.pagination').replaceWith("#{escape_javascript(paginate @activities)}");
+- sleep 1

@@ -3,7 +3,7 @@ class StudentsController < ApplicationController
 
   def show
     @student    = Student.find(params[:id])
-    @activities = @student.activities.desc(:created_at)
+    @activities = @student.activities.desc(:created_at).page(params[:page])
   end
 
   def new
@@ -22,12 +22,12 @@ class StudentsController < ApplicationController
 
   def edit
     @student    = Student.find(params[:id])
-    @activities = @student.activities.desc(:created_at)
+    @activities = @student.activities.desc(:created_at).page(params[:page])
   end
 
   def update
     student     = Student.find(params[:id])
-    @activities = student.activities.desc(:created_at)
+    @activities = student.activities.desc(:created_at).page(params[:page])
 
     student.update_student(params)
 
@@ -35,7 +35,7 @@ class StudentsController < ApplicationController
       redirect_to student_path(student.id), notice: "#{student.name}'s profile was updated."
     else
       redirect_to edit_student_path(student.id), alert: "There was a problem updating #{student.name}'s profile. Please try again."
-    end    
+    end
   end
 
   def destroy

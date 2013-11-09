@@ -2,4 +2,8 @@
   = render "shared/student"
   .row.profile
     = render "shared/student_side_nav"
-    = render "shared/activity"
+    .span8
+      %h6 TIMELINE
+      .activities
+        = render "shared/activity"
+      = paginate @activities

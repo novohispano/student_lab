@@ -1,7 +1,6 @@
 @import "bootstrap";
 
 p {
-  font-weight: lighter;
   font-size: 14px;
 }
 
@@ -105,6 +104,13 @@ form {
 
 // PROFILE
 
+.contact-info {
+  position: relative;
+    top: 22px;
+    right: 30px;
+  line-height: 14px;
+}
+
 .row.profile {
   margin-bottom: 20px;
   border: 1px solid #eeeeee;
@@ -114,9 +120,9 @@ form {
 
 .btn.btn-student {
   position: relative;
-  float: right;
-  bottom: 120px;
-  left: 60px;
+    float: right;
+    bottom: 145px;
+    left: 250px;
 }
 
 .btn.btn-student-edit {
@@ -154,6 +160,11 @@ form {
 .error {
   position: relative;
   top: 0px;
+}
+
+.img-border {
+  border: 1px solid #eeeeee;
+  padding: 2px;
 }
 
 .img-activity {
@@ -201,4 +212,10 @@ textarea.one-on-one{
 
 .span3.side-nav {
   margin-bottom: 10px;
+}
+
+.student-name {
+  position: relative;
+    left: 2px;
+    top: 2px;
 }

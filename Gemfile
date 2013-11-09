@@ -15,6 +15,7 @@ gem 'haml'
 gem 'omniauth-github'
 gem 'figaro'
 gem 'kaminari'
+gem 'gravatar_image_tag'
 
 group :test do
   gem 'database_cleaner'
@@ -25,6 +26,7 @@ end
 group :development, :test do
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'quiet_assets'
 end
 
 group :production do
