@@ -1,8 +1,11 @@
 .row.profile
-  .span3
+  .span2
     %h6 STUDENT PROFILE
     %h3 #{@student.name}
-  .span8
+  .span2
+    %br
+    = gravatar_image_tag(@student.email, class: "img-border", gravatar: { size: 100 })
+  .span7
     %h6 CONTACT INFO
     %p email: #{mail_to @student.email}
     %p phone: #{format_phone(@student.phone)}
