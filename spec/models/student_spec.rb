@@ -25,7 +25,7 @@ describe Student do
 
       it "creates a student with an activity" do
         student = Student.new.create_student(params)
-        
+
         result = student.activities.last
 
         expect(result).not_to be_nil
@@ -37,7 +37,7 @@ describe Student do
     context "#update_student" do
       def diff_params
         {
-          student: 
+          student:
           {
             name:   "Mr. Cow",
             email:  "cow@example.com",
@@ -49,7 +49,7 @@ describe Student do
 
       it "updates a student" do
         student = Student.new.create_student(params)
-        
+
         result = student.update_student(diff_params)
 
         expect(result).to be_valid
@@ -74,7 +74,7 @@ describe Student do
     context "#destroy_student" do
       it "destroys a student" do
         student    = Student.new.create_student(params)
-        student_id = student.id 
+        student_id = student.id
         student.destroy_student(params)
 
         result = Student.find(student_id)
@@ -102,30 +102,12 @@ describe Student do
 
       expect(result).not_to be_valid
     end
-
-    it "doesn't create a student when a phone is less than 10 digits" do
-      invalid_params         = params
-      invalid_params[:phone] = "1232"
-
-      result = Student.new.create_student(invalid_params)
-
-      expect(result).not_to be_valid
-    end
-
-    it "doesn't create a student when a phone number containes non-digits" do
-      invalid_params         = params
-      invalid_params[:phone] = "!@#$%^}MNC"
-
-      result = Student.new.create_student(invalid_params)
-
-      expect(result).not_to be_valid
-    end
   end
 
   context "when the student already exists" do
     it "doesn't create a student when the name already exists" do
       Student.new.create_student(params)
-      
+
       different_params         = params
       different_params[:email] = "farm@example.com"
 
@@ -136,7 +118,7 @@ describe Student do
 
     it "doesn't create a student when the email already exists" do
       Student.new.create_student(params)
-      
+
       different_params        = params
       different_params[:name] = "John Goat"
 

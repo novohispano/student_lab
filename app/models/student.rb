@@ -13,6 +13,9 @@ class Student
   has_many :one_on_ones
   has_many :activities, dependent: :destroy
 
+  has_and_belongs_to_many :mentors
+  has_many :mentor_reports
+
   def create_student(params)
     student = Student.create(
       name:   params[:name],
