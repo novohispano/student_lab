@@ -7,4 +7,5 @@ class Activity
   belongs_to :user
   belongs_to :student
   belongs_to :one_on_one
+  belongs_to :mentor
 end

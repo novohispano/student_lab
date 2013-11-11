@@ -1,0 +1,21 @@
+.container
+  .row.profile
+    .span3.side-nav
+      %h6 MENTORS
+      - @mentors.each do |mentor|
+        %p= link_to "#{mentor.name}", mentor_path(mentor.id)
+
+      = link_to "ADD MENTOR", new_mentor_path, class: "btn btn-success btn-mini"
+    .span8
+      %h6 ADD A mentor
+      = form_for @mentor do |f|
+        %h5 Mentor Name (Required)
+        = f.text_field :name
+        %h5 Email (Required)
+        = f.email_field :email
+        %h5 Phone (10 digits only)
+        = f.telephone_field :phone
+        %h5 Github (URL)
+        = f.url_field :github
+        = f.hidden_field :user_id, value: current_user.id
+        = f.submit "Add", class: "btn btn-success form"

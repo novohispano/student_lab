@@ -4,10 +4,13 @@ module ApplicationHelper
   end
 
   def description(activity)
-    if activity.one_on_one
+    case
+    when activity.one_on_one
       build_one_on_one(activity)
-    else
+    when activity.student
       build_student(activity)
+    when activity.mentor
+      build_mentor(activity)
     end
   end
 
@@ -40,6 +43,20 @@ module ApplicationHelper
       "<b>#{activity.user.name}</b> #{activity.action} a student".html_safe
     when "updated"
       "<b>#{activity.user.name}</b> #{activity.action} student <b>#{student_url}</b>'s profile.".html_safe
+    end
+  end
+
+  def build_mentor(activity)
+    mentor     = activity.mentor
+    mentor_url = link_to mentor.name, mentor_path(mentor.id)
+
+    case activity.action
+    when "added"
+      "<b>#{activity.user.name}</b> #{activity.action} mentor <b>#{mentor_url}</b> to StudentLab.".html_safe
+    when "deleted"
+      "<b>#{activity.user.name}</b> #{activity.action} a mentor".html_safe
+    when "updated"
+      "<b>#{activity.user.name}</b> #{activity.action} mentor <b>#{mentor_url}</b>'s profile.".html_safe
     end
   end
 end
