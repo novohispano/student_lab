@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
-  before_action :students
+  before_action :students, :mentors
 
   private
 
@@ -25,5 +25,9 @@ class ApplicationController < ActionController::Base
 
   def students
     @students ||= Student.all.asc(:name)
+  end
+
+  def mentors
+    @mentors ||= Mentor.all.asc(:name)
   end
 end
