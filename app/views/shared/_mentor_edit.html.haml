@@ -1,0 +1,19 @@
+.row.profile
+  = form_for(@mentor, url: "/mentors/#{@mentor.id}") do |f|
+    = f.hidden_field :user_id, value: current_user.id
+    - if @mentor.errors.any?
+      - @mentor.errors.full_messages.each do |msg|
+        %p= msg
+    .span3
+      %h6 mentor PROFILE
+      %p Name (Required)
+      = f.text_field :name, value: @mentor.name
+    .span8
+      %h6 CONTACT INFO
+      %p Email (Required)
+      = f.text_field :email, value: @mentor.email
+      %p Phone (10 digits only)
+      = f.text_field :phone, value: @mentor.phone
+      %p Github (URL)
+      = f.text_field :github, value: @mentor.github
+      = f.submit "SAVE", class: "btn btn-mini btn-success btn-student-edit"

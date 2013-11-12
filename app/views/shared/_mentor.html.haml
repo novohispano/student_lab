@@ -1,0 +1,11 @@
+.row.profile
+  .span2
+    %h6 MENTOR PROFILE
+    %h3= gravatar_image_tag(@mentor.email, class: "img-border", gravatar: { size: 100 })
+  .span7
+    .contact-info
+      %h3 #{@mentor.name}
+      %p email: #{mail_to @mentor.email}
+      %p phone: #{format_phone(@mentor.phone)}
+      %p github: #{link_to @mentor.github, @mentor.github}
+      = link_to "EDIT", edit_mentor_path(@mentor.id), class: "btn btn-mini btn-success btn-student"

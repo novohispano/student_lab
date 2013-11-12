@@ -1,0 +1,9 @@
+.container
+  = render "shared/mentor"
+  .row.profile
+    = render "shared/mentor_side_nav"
+    .span8
+      %h6 TIMELINE
+      .activities
+        = render "shared/activity"
+      = paginate @activities

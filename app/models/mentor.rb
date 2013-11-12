@@ -28,6 +28,27 @@ class Mentor
     mentor
   end
 
+  def update_mentor(params)
+    params = params[:mentor]
+
+    self.update_attributes(
+      name:   params[:name],
+      email:  params[:email],
+      phone:  clean_phone(params[:phone]),
+      github: params[:github]
+      )
+
+    self.create_activity("updated", params) if self.save
+
+    self
+  end
+
+  def destroy_mentor(params)
+    self.create_activity("deleted", params)
+
+    self.destroy
+  end
+
   def create_activity(action, params)
     activity = Activity.create(
       mentor_id: self.id,
@@ -36,5 +57,11 @@ class Mentor
       )
 
     activity.save
+  end
+
+  private
+
+  def clean_phone(number)
+    number.gsub(/\D/, "")[0..10]
   end
 end

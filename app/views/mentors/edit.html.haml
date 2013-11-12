@@ -1,0 +1,10 @@
+.container
+  = render "shared/mentor_edit"
+  .row.profile
+    = render "shared/mentor_side_nav"
+    .span8
+      %h6 TIMELINE
+      .activities
+        = render "shared/activity"
+      = paginate @activities
+  = link_to "REMOVE MENTOR", mentor_path(@mentor.id, mentor: { user_id: current_user.id }), method: :delete, confirm: "Do you want to remove #{@mentor.name} from StudentLab?", class: "btn btn-mini btn-student-remove"
