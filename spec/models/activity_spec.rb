@@ -14,36 +14,36 @@ describe Activity do
     end
 
     it "has a user" do
-      user = User.create
+      user          = User.create
       activity.user = user
-      result = activity
+      result        = activity
 
       expect(activity.user).not_to be_nil
       expect(activity.user).to eq user
     end
 
     it "has a student" do
-      student = Student.create
+      student          = Student.create
       activity.student = student
-      result = activity
+      result           = activity
 
       expect(activity.student).not_to be_nil
       expect(activity.student).to eq student
     end
 
     it "has a one_on_one" do
-      one_on_one = OneOnOne.create
+      one_on_one          = OneOnOne.create
       activity.one_on_one = one_on_one
-      result = activity
+      result              = activity
 
       expect(activity.one_on_one).not_to be_nil
       expect(activity.one_on_one).to eq one_on_one
     end
 
     it "has a mentor" do
-      mentor = Mentor.create
+      mentor          = Mentor.create
       activity.mentor = mentor
-      result = activity
+      result          = activity
 
       expect(activity.mentor).not_to be_nil
       expect(activity.mentor).to eq mentor
