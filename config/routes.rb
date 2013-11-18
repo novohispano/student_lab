@@ -7,9 +7,8 @@ StudentLab::Application.routes.draw do
     resources :one_on_ones
   end
 
-  resources :mentors do
-    resources :mentor_reports
-  end
+  resources :mentors
+  resources :mentor_reports
 
   root 'home#show'
 end

@@ -1,4 +1,4 @@
 .span3
   %h6 FILE
   %p= link_to "Timeline", mentor_path(@mentor.id)
-  %p Mentor Reports
+  %p= link_to "Mentor Reports", mentor_reports_path(mentor_id: @mentor.id)

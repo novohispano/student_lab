@@ -12,6 +12,7 @@ class User
 
   has_many :activities
   has_many :one_on_ones
+  has_many :mentor_reports
 
   def self.from_omniauth(params)
     find_user(params) || create_user(params)

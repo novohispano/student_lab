@@ -6,27 +6,22 @@ class MentorReport
 
   belongs_to :mentor
   belongs_to :student
+  belongs_to :user
   has_many   :activities, dependent: :destroy
 
   def create_mentor_report(params)
-    mentor_report = MentorReport.create(
-      student_id:  params[:student_id],
-      user_id:     params[:mentor_report][:user_id],
-      description: format_description(params[:mentor_report][:description])
-      )
+    params[:description] = format_description(params[:description])
+    mentor_report = MentorReport.create(params)
 
     mentor_report.create_activity("created", params) if mentor_report.save
-
     mentor_report
   end
 
   def update_mentor_report(params)
-    self.update_attributes(
-      description: format_description(params[:mentor_report][:description])
-      )
+    params[:description] = format_description(params[:description])
+    self.update_attributes(params)
 
     self.create_activity("updated", params) if self.save
-
     self
   end
 
@@ -38,10 +33,11 @@ class MentorReport
 
   def create_activity(action, params)
     activity = Activity.create(
-      student_id:    params[:student_id],
-      user_id:       params[:mentor_report][:user_id],
+      student_id:       params[:student_id],
+      user_id:          params[:user_id],
+      mentor_id:        params[:mentor_id],
       mentor_report_id: self.id,
-      action:        action
+      action:           action
       )
 
     activity.save

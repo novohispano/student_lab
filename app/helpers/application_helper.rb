@@ -7,10 +7,12 @@ module ApplicationHelper
     case
     when activity.one_on_one
       build_one_on_one(activity)
-    when activity.student
-      build_student(activity)
+    when activity.mentor_report
+      build_mentor_report(activity)
     when activity.mentor
       build_mentor(activity)
+    when activity.student
+      build_student(activity)
     end
   end
 
@@ -32,17 +34,18 @@ module ApplicationHelper
     end
   end
 
-  def build_student(activity)
+  def build_mentor_report(activity)
+    mentor      = activity.mentor
+    mentor_url  = link_to mentor.name, mentor_path(mentor.id)
+
     student     = activity.student
     student_url = link_to student.name, student_path(student.id)
 
-    case activity.action
-    when "added"
-      "<b>#{activity.user.name}</b> #{activity.action} student <b>#{student_url}</b> to StudentLab.".html_safe
-    when "deleted"
-      "<b>#{activity.user.name}</b> #{activity.action} a student".html_safe
-    when "updated"
-      "<b>#{activity.user.name}</b> #{activity.action} student <b>#{student_url}</b>'s profile.".html_safe
+    if activity.action == "deleted"
+      "<b>#{activity.user.name}</b> deleted a mentor report for mentor <b>#{mentor_url}</b>.".html_safe
+    else
+      activity_url = link_to "mentor report", mentor_report_path(id: activity.mentor_report_id, mentor_id: activity.mentor_id)
+      "<b>#{activity.user.name}</b> #{activity.action} a #{activity_url} for student <b>#{student_url}</b>.".html_safe
     end
   end
 
@@ -59,4 +62,19 @@ module ApplicationHelper
       "<b>#{activity.user.name}</b> #{activity.action} mentor <b>#{mentor_url}</b>'s profile.".html_safe
     end
   end
+
+  def build_student(activity)
+    student     = activity.student
+    student_url = link_to student.name, student_path(student.id)
+
+    case activity.action
+    when "added"
+      "<b>#{activity.user.name}</b> #{activity.action} student <b>#{student_url}</b> to StudentLab.".html_safe
+    when "deleted"
+      "<b>#{activity.user.name}</b> #{activity.action} a student".html_safe
+    when "updated"
+      "<b>#{activity.user.name}</b> #{activity.action} student <b>#{student_url}</b>'s profile.".html_safe
+    end
+  end
+
 end

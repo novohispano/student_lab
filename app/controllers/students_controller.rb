@@ -18,7 +18,7 @@ class StudentsController < ApplicationController
     student = Student.new.create_student(params[:student])
 
     if student.save
-      redirect_to feed_path, notice: "#{student.name} was added to StudentLab."
+      redirect_to students_path, notice: "#{student.name} was added to StudentLab."
     else
       redirect_to new_student_path, alert: "There was a problem adding a student. Please try again."
     end

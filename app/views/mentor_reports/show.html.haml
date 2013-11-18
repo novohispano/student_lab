@@ -1,0 +1,21 @@
+.container
+  = render "shared/mentor"
+  .row.profile
+    = render "shared/mentor_side_nav"
+    .span8
+      %h5 MENTOR REPORT
+      %hr
+        .row
+          .span3
+            %h6 DATE
+            = format_time(@mentor_report.created_at)
+          .span2
+            %h6 INSTRUCTOR
+            = @mentor_report.user.name
+          .span3
+            %h6 STUDENT
+            = link_to @mentor_report.student.name, student_path(@mentor_report.student)
+      %hr
+      %h6 OBSERVATIONS
+      = link_to "EDIT", edit_mentor_report_path(id: @mentor_report.id, mentor_id: @mentor), class: "btn btn-mini btn-success btn-one-on-one"
+      %p= raw @mentor_report.description
