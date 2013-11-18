@@ -1,9 +1,9 @@
 .container
-  = render "shared/mentor"
+  = render "shared/student"
   .row.profile
-    = render "shared/mentor_side_nav"
+    = render "shared/student_side_nav"
     .span8
-      = form_for @mentor_report, { url: mentor_report_path(id: @mentor_report, mentor_id: @mentor.id, user_id: current_user.id), method: :patch } do |f|
+      = form_for @mentor_report, { url: student_mentor_report_path(id: @mentor_report, student_id: @student.id, user_id: current_user.id), method: :patch } do |f|
         %h5 EDIT MENTOR REPORT
         %hr
         .row
@@ -14,8 +14,8 @@
             %h6 INSTRUCTOR
             %p #{@mentor_report.user.name}
           .span3
-            %h6 STUDENT
-            = f.collection_select :student_id, Student.all, :id, :name
+            %h6 MENTOR
+            = f.collection_select :mentor_id, Mentor.all, :id, :name
         %hr
         %h6 OBSERVATIONS
         = f.submit "SAVE", class: "btn btn-mini btn-success btn-one-on-one"

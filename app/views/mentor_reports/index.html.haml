@@ -3,7 +3,7 @@
   .row.profile
     = render "shared/mentor_side_nav"
     .span8
-      %h6 MENTOR REPORT
+      %h6 MENTOR REPORTS
       = link_to "NEW", new_mentor_report_path(mentor_id: @mentor.id), class: "btn btn-mini btn-success btn-one-on-one"
       -if @mentor_reports.count == 0
         .activity
@@ -13,13 +13,13 @@
           %thead
             %tr
               %th CREATED
-              %th INSTRUCTOR
+              %th STUDENT
               %th ACTIONS
           %tbody
           - @mentor_reports.each do |mentor_report|
             %tr
               %td= format_time(mentor_report.created_at)
-              %td= mentor_report.user.name
+              %td= mentor_report.student.name
               %td
                 .btn-group
                   = link_to "OPEN", mentor_report_path(id: mentor_report.id, mentor_id: @mentor.id), class: "btn btn-mini"

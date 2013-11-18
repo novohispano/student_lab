@@ -44,7 +44,7 @@ module ApplicationHelper
     if activity.action == "deleted"
       "<b>#{activity.user.name}</b> deleted a mentor report for mentor <b>#{mentor_url}</b>.".html_safe
     else
-      activity_url = link_to "mentor report", mentor_report_path(id: activity.mentor_report_id, mentor_id: activity.mentor_id)
+      activity_url = link_to "mentor report", student_mentor_report_path(id: activity.mentor_report_id, student_id: activity.student_id)
       "<b>#{activity.user.name}</b> #{activity.action} a #{activity_url} for student <b>#{student_url}</b>.".html_safe
     end
   end

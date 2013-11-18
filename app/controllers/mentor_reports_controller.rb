@@ -53,11 +53,9 @@ class MentorReportsController < ApplicationController
   end
 
   def mentor_report_params
-    mentor_report               = {}
+    mentor_report               = params.slice(:mentor_id, :user_id)
     mentor_report[:description] = params[:mentor_report][:description]
     mentor_report[:student_id]  = params[:mentor_report][:student_id]
-    mentor_report[:mentor_id]   = params[:mentor_id]
-    mentor_report[:user_id]     = params[:user_id]
-    mentor_report
+    mentor_report.permit(:student_id, :mentor_id, :description, :user_id)
   end
 end

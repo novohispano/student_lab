@@ -5,6 +5,7 @@ StudentLab::Application.routes.draw do
 
   resources :students do
     resources :one_on_ones
+    resources :mentor_reports, controller: "student_mentor_reports"
   end
 
   resources :mentors

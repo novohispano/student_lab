@@ -5,10 +5,13 @@
     .span8
       %h6 ONE-ON-ONE
       %hr
-      %h6 DATE
-      %p #{format_time(@one_on_one.created_at)}
-      %h6 INSTRUCTOR
-      %p #{@one_on_one.user.name}
+      .row
+        .span3
+          %h6 DATE
+          %p #{format_time(@one_on_one.created_at)}
+        .span2
+          %h6 INSTRUCTOR
+          %p #{@one_on_one.user.name}
       %hr
       %h6 OBSERVATIONS
       = link_to "EDIT", edit_student_one_on_one_path(@student.id, @one_on_one.id), class: "btn btn-mini btn-success btn-one-on-one"

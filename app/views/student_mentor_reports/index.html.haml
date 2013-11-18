@@ -1,0 +1,27 @@
+.container
+  = render "shared/student"
+  .row.profile
+    = render "shared/student_side_nav"
+    .span8
+      %h6 MENTOR REPORTS
+      = link_to "NEW", new_student_mentor_report_path(@student.id), class: "btn btn-mini btn-success btn-one-on-one"
+      -if @mentor_reports.count == 0
+        .activity
+          %p.description.error This student doesn't have any mentor reports yet.
+      - else
+        %table.table.table-bordered.table-striped.table-one-on-one
+          %thead
+            %tr
+              %th CREATED
+              %th MENTOR
+              %th ACTIONS
+          %tbody
+          - @mentor_reports.each do |mentor_report|
+            %tr
+              %td= format_time(mentor_report.created_at)
+              %td= mentor_report.mentor.name
+              %td
+                .btn-group
+                  = link_to "OPEN", student_mentor_report_path(id: mentor_report.id, student_id: @student.id), class: "btn btn-mini"
+                  = link_to "EDIT", edit_student_mentor_report_path(id: mentor_report.id, student_id: @student.id), class: "btn btn-mini"
+                  = link_to "DELETE", student_mentor_report_path(id: mentor_report.id, student_id: @student.id, mentor_report: {user_id: current_user.id }), method: :delete, confirm: "Do you want to delete this mentor report?", class: "btn btn-mini"
