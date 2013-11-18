@@ -3,13 +3,13 @@ StudentLab::Application.routes.draw do
   get 'auth/failure',            to: redirect('/')
   get 'signout',                 to: 'sessions#destroy'
 
-  get 'feed', to: 'feed#show'
-
-  resources :students, except: [:index] do
+  resources :students do
     resources :one_on_ones
   end
 
-  resources :mentors
+  resources :mentors do
+    resources :mentor_reports
+  end
 
   root 'home#show'
 end

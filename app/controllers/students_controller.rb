@@ -1,6 +1,10 @@
 class StudentsController < ApplicationController
   before_action :authenticate_user
 
+  def index
+    @activities = Activity.all.desc(:created_at).page(params[:page])
+  end
+
   def show
     @student    = Student.find(params[:id])
     @activities = @student.activities.desc(:created_at).page(params[:page])

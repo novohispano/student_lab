@@ -2,10 +2,7 @@
   .row.profile
     .span3.side-nav
       %h6 MENTORS
-      - @mentors.each do |mentor|
-        %p
-          = gravatar_image_tag(mentor.email, class: "img-border img-circle", gravatar: { size: 25 })
-          = link_to "#{mentor.name}", mentor_path(mentor.id), class: "student-name"
+      = render @mentors
       = link_to "ADD MENTOR", new_mentor_path, class: "btn btn-success btn-mini"
     .span8
       %h6 TIMELINE

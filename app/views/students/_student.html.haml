@@ -1,0 +1,3 @@
+%p
+  = gravatar_image_tag(student.email, class: "img-border img-circle", gravatar: { size: 25 })
+  = link_to "#{student.name}", student_path(student.id), class: "student-name"

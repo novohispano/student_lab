@@ -1,10 +1,8 @@
 .container
   .row.profile
     .span3.side-nav
-      %h6 STUDENTS      
-      - @students.each do |student|
-        %p= link_to "#{student.name}", student_path(student.id)
-
+      %h6 STUDENTS
+      = render @students
       = link_to "ADD STUDENT", new_student_path, class: "btn btn-success btn-mini"
     .span8
       %h6 ADD A STUDENT

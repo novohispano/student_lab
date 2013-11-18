@@ -48,6 +48,6 @@ class MentorsController < ApplicationController
 
     mentor.destroy_mentor(params)
 
-    redirect_to feed_path, notice: "#{name} was removed from StudentLab."
+    redirect_to mentors_path, notice: "#{name} was removed from StudentLab."
   end
 end
