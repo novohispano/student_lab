@@ -19,7 +19,7 @@
           - @mentor_reports.each do |mentor_report|
             %tr
               %td= format_time(mentor_report.created_at)
-              %td= mentor_report.mentor.name
+              %td= link_to mentor_report.mentor.name, mentor_path(mentor_report.mentor.id)
               %td
                 .btn-group
                   = link_to "OPEN", student_mentor_report_path(id: mentor_report.id, student_id: @student.id), class: "btn btn-mini"
