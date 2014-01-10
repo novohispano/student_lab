@@ -115,6 +115,8 @@ GEM
       omniauth (~> 1.0)
     origin (1.1.0)
     polyglot (0.3.3)
+    puma (2.7.1)
+      rack (>= 1.1, < 2.0)
     quiet_assets (1.0.2)
       railties (>= 3.1, < 5.0)
     rack (1.5.2)
@@ -201,6 +203,7 @@ DEPENDENCIES
   kaminari
   mongoid!
   omniauth-github
+  puma
   quiet_assets
   rails (= 4.0.0)
   rails_12factor
