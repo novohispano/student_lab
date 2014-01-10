@@ -14,7 +14,10 @@
             = @mentor_report.user.name
           .span3
             %h6 MENTOR
-            = link_to @mentor_report.mentor.name, mentor_path(@mentor_report.mentor.id)
+            - if @mentor_report.mentor
+              = link_to @mentor_report.mentor.name, mentor_path(@mentor_report.mentor.id)
+            - else
+              Unknown
       %hr
       %h6 OBSERVATIONS
       = link_to "EDIT", edit_student_mentor_report_path(id: @mentor_report.id, student_id: @student.id), class: "btn btn-mini btn-success btn-one-on-one"
