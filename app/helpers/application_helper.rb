@@ -36,7 +36,7 @@ module ApplicationHelper
 
   def build_mentor_report(activity)
     mentor      = activity.mentor
-    mentor_url  = link_to mentor.name, mentor_path(mentor.id)
+    mentor_url  = mentor ? link_to(mentor.name, mentor_path(mentor.id)) : "unknown"
 
     student     = activity.student
     student_url = link_to student.name, student_path(student.id)
