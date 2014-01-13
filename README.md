@@ -7,8 +7,11 @@ StudentLab is a student CRM app built for JumpstartLab. You can keep track of th
 1. Clone this repo.
 2. Run bundle install
 3. Run rake db:create
-3. Create /config/application.yml and put your Github keys there.
-4. Enjoy.
+4. Register the application [on GitHub](https://github.com/settings/applications/new) to obtain oauth keys
+   The authorization callback url is **http://localhost:3000/auth/github/callback**
+5. Copy /config/application.yml.example to /config/application.yml
+6. Add your GitHub OAuth keys to /config/application.yml
+7. Enjoy.
 
 StudentLab runs on MongoDB, so you won't need to migrate anything.
 
