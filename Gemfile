@@ -16,6 +16,7 @@ gem 'omniauth-github'
 gem 'figaro'
 gem 'kaminari'
 gem 'gravatar_image_tag'
+gem 'puma'
 
 group :test do
   gem 'database_cleaner'
